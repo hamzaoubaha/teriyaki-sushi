@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teriyaki sushi - Order Your Favorites</title>
+    <meta name="description" content="Order delicious Asian cuisine from Panda Express. Fast delivery, fresh ingredients, amazing flavors.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    
+    <style>
+        :root {
+            --primary-color: #dc2626;
+            --primary-dark: #b91c1c;
+            --secondary-color: #f91616;
+            --accent-color: #059669;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --background: #ffffff;
+            --surface: #f9fafb;
+            --border: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --background: #000000;
+            --surface: #1d1e1e;
+            --border: #3b3c3d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        /* Header */
+        .header {
+            background: var(--background);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 70px;
+            background-color: white ;
+            border-radius: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+        .imglogo img{
+          max-width: 45px;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle, .lang-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-toggle:hover, .lang-toggle:hover {
+            background: var(--surface);
+            transform: translateY(-1px);
+        }
+
+        .call-btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .call-btn:hover {
+            background: #047857;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Search */
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto 1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid var(--border);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background: var(--surface);
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            margin-top: 0.1rem;
+            box-shadow: var(--shadow-lg);
+            display: none;
+            z-index: 100;
+        }
+
+        .suggestion-item {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .suggestion-item:hover {
+            background: var(--surface);
+        }
+
+        /* Categories */
+        .categories-section {
+            margin-bottom: 3rem;
+        }
+
+        .categories-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .swipe-hint {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .categories-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .categories {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+            padding: 0.5rem 0;
+        }
+
+        .categories::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-card {
+            flex-shrink: 0;
+            min-width: 140px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card.active {
+            background: linear-gradient(135deg, var(--secondary-color), #f50808);
+            
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .category-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Offers */
+        .offers-box {
+            background: linear-gradient(135deg, #f1f0ee, #4de401);
+            border: 2px none white;
+            border-radius: var(--border-radius);
+            padding: 1.4rem;
+            margin-bottom: 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offers-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-conic-gradient(from 0deg, transparent 0deg 30deg, rgba(249, 115, 22, 0.05) 30deg 60deg);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        .offers-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .offers-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: rgb(0, 0, 0);
+            margin-bottom: 0.5rem;
+        }
+
+        .offers-text {
+            color: #b0907c;
+            font-weight: 500;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .original-price {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            margin-left: 0.5rem;
+        }
+
+        .add-to-cart {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+  
+
+
+        /* Loading State */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .header-actions {
+                gap: 0.5rem;
+            }
+
+            .call-btn span {
+                display: none;
+            }
+
+            .main {
+                padding: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+
+            .swipe-hint {
+                display: flex;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .swipe-hint {
+                display: none;
+            }
+        }
+
+        /* RTL Support */
+        [dir="rtl"] .search-icon {
+            left: auto;
+            right: 1rem;
+        }
+
+        [dir="rtl"] .search-input {
+            padding: 1rem 3rem 1rem 1rem;
+        }
+
+        [dir="rtl"] .discount-badge {
+            right: auto;
+            left: 1rem;
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles */
+        *:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        button:focus, a:focus {
+            outline-color: var(--primary-color);
+        }
+
+        /* Animation delays for staggered loading */
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in {
+            transform: translateY(20px);
+        }
+    </style>
+</head>
+<body>
+    <header class="header" role="banner">
+        <div class="header-content">
+            <a href="#" class="logo" aria-label="Panda Express Home">
+                <div class="logo-icon" aria-hidden="true">
+                    <i class="imglogo"> <img src="Teriyaki_Logo_1_-removebg-preview (1).png" title="teriyaki logo" alt= "teriyaki logo " > </i>
+                </div>
+                <span data-translate="brand">Teriyaki <sup>sushi</sup> </span>
+            </a>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                
+                <button class="lang-toggle" id="langToggle" aria-label="Change language" title="Change language">
+                    <i class="fas fa-language"></i>
+                    <span id="currentLang">EN</span>
+                </button>
+                
+                <a href="tel:+212522000000" class="call-btn" aria-label="Call restaurant">
+                    <i class="fas fa-phone"></i>
+                    <span data-translate="call">Call Now</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main" role="main">
+        <section class="hero" aria-labelledby="hero-title">
+            <h1 id="hero-title" data-translate="hero.title" title="teriyaki sushi" >Order Your Favorites Now </h1>
+            <p data-translate="hero.subtitle">Delicious Asian cuisine delivered fresh to your door</p>
+        </section>
+
+        <section class="search-container" role="search" aria-label="Search for food">
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                <input 
+                    type="search" 
+                    class="search-input" 
+                    id="searchInput"
+                    placeholder="Search for dishes, drinks..."
+                    data-translate-placeholder="search.placeholder"
+                    aria-label="Search for food items"
+                    autocomplete="off"
+                >
+                <div class="search-suggestions" id="searchSuggestions" role="listbox" aria-label="Search suggestions">
+                    <!-- Dynamic suggestions will be inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="categories-section" aria-labelledby="categories-title">
+            <div class="categories-header">
+                <h2 class="section-title" id="categories-title" data-translate="categories.title">Categories</h2>
+                <div class="swipe-hint">
+                    <i class="fas fa-hand-pointer" aria-hidden="true"></i>
+                    <span data-translate="categories.swipe">Swipe to view more</span>
+                </div>
+            </div>
+            
+            <div class="categories-container">
+                <div class="categories" id="categories" role="tablist" aria-label="Food categories">
+                    <!-- Categories will be dynamically populated from ?? -->
+                </div>
+            </div>
+        </section>
+
+        <section class="offers-box" aria-labelledby="offers-title">
+            <div class="offers-content">
+                <h3 class="offers-title" id="offers-title" data-translate="offers.title"> <i class="fi fi-rr-badge-percent"></i> Special Offers</h3>
+                <p class="offers-text" data-translate="offers.text">Save 20% on selected items! Limited time only.</p>
+            </div>
+        </section>
+
+        <section class="products-section" aria-labelledby="products-title">
+            <h2 class="section-title" id="products-title" data-translate="products.title">Featured Dishes</h2>
+            <div class="products-grid" id="productsGrid" role="grid" aria-label="Available dishes">
+                <div class="loading">
+                    <div class="spinner" aria-label="Loading products"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                // brand: "teriyaki",
+                call: "Call Now",
+                "hero.title": "Order Your Favorites Now",
+                "hero.subtitle": "Delicious Asian cuisine delivered fresh to your door",
+                "search.placeholder": "Search for dishes, drinks...",
+                "categories.title": "Categories",
+                "categories.swipe": "Swipe to view more",
+                "offers.title": "🎉 Special Offers",
+                "offers.text": "Save 20% on selected items! Limited time only.",
+                "products.title": "Featured Dishes",
+                "add_to_cart": "Add to Cart",
+                categories: {
+                    offers: "Offers",
+                    soups: "Soups",
+                    salads: "Salads",
+                    poke_bowl: "Poke Bowl",
+                    nems: "Nems",
+                    dynamites: "Dynamites",
+                    tempura: "Tempura",
+                    saumon_filet: "Salmon Filet",
+                    nigiris: "Nigiris",
+                    chirashi: "Chirashi"
+                }
+            },
+            fr: {
+                // brand: "PANDA",
+                call: "Appeler",
+                "hero.title": "Commandez vos favoris maintenant",
+                "hero.subtitle": "Délicieuse cuisine asiatique livrée fraîche à votre porte",
+                "search.placeholder": "Rechercher des plats, boissons...",
+                "categories.title": "Catégories",
+                "categories.swipe": "Glissez pour voir plus",
+                "offers.title": "🎉 Offres Spéciales",
+                "offers.text": "Économisez 20% sur les articles sélectionnés! Offre limitée.",
+                "products.title": "Plats Vedettes",
+                "add_to_cart": "Ajouter au Panier",
+                categories: {
+                    offers: "Offres",
+                    soups: "Soupes",
+                    salads: "Salades",
+                    poke_bowl: "Poke Bowl",
+                    nems: "Nems",
+                    dynamites: "Dynamites",
+                    tempura: "Tempura",
+                    saumon_filet: "Filet de Saumon",
+                    nigiris: "Nigiris",
+                    chirashi: "Chirashi"
+                }
+            },
+            // ar: {
+            //     // brand: "باندا",
+            //     call: "اتصل الآن",
+            //     "hero.title": "اطلب المفضلات لديك الآن",
+            //     "hero.subtitle": "مأكولات آسيوية لذيذة تُقدم طازجة إلى باب منزلك",
+            //     "search.placeholder": "البحث عن الأطباق والمشروبات...",
+            //     "categories.title": "الفئات",
+            //     "categories.swipe": "اسحب لرؤية المزيد",
+            //     "offers.title": "🎉 عروض خاصة",
+            //     "offers.text": "وفر 20% على عناصر مختارة! عرض محدود الوقت.",
+            //     "products.title": "الأطباق المميزة",
+            //     "add_to_cart": "أضف للسلة",
+            //     categories: {
+            //         offers: "العروض",
+            //         soups: "الشوربات",
+            //         salads: "السلطات",
+            //         poke_bowl: "بوكي بول",
+            //         nems: "نمس",
+            //         dynamites: "ديناميت",
+            //         tempura: "تمبورا",
+            //         saumon_filet: "فيليه السلمون",
+            //         nigiris: "نيغيري",
+            //         chirashi: "شيراشي"
+            //     }
+            // }
+        };
+
+        // Sample data
+        const categories = [
+            { id: 'offers', name: 'offers', active: true , url :'pexels-noon-26180135-removebg-preview.png'},
+            { id: 'soups', name: 'soups', active: false },
+            { id: 'salads', name: 'salads', active: false },
+            { id: 'poke_bowl', name: 'poke_bowl', active: false },
+            { id: 'nems', name: 'nems', active: false },
+            { id: 'dynamites', name: 'dynamites', active: false },
+            { id: 'tempura', name: 'tempura', active: false },
+            { id: 'saumon_filet', name: 'saumon_filet', active: false },
+            { id: 'nigiris', name: 'nigiris', active: false },
+            { id: 'chirashi', name: 'chirashi', active: false }
+        ];
+
+        const products = [
+            {
+                id: 1,
+                name: "Fried Rice Express",
+                description: "Delicious fried rice with fresh vegetables and your choice of protein",
+                price: 70,
+                originalPrice: 90,
+                discount: 20,
+                image: "pexels-noon-26180135-removebg-preview.png",
+                category: "offers"
+            },
+            {
+                id: 2,
+                name: "Noodles Express",
+                description: "Fresh noodles with savory sauce and crispy vegetables",
+                price: 70,
+                originalPrice: 90,
+                discount: 20,
+                image: "pexels-polina-tankilevitch-5848474-removebg-preview.png",
+                category: "offers"
+            },
+            {
+                id: 3,
+                name: "Sushi Express",
+                description: "Premium sushi selection with fresh fish and perfect rice",
+                price: 80,
+                originalPrice: 100,
+                discount: 20,
+                image: "pexels-samuel-moura-465909567-31225297-removebg-preview.png",
+                category: "offers"
+            },
+            // {
+            //     id: 4,
+            //     name: "Yakitori Express",
+            //     description: "Grilled chicken skewers with teriyaki glaze",
+            //     price: 80,
+            //     originalPrice: 100,
+            //     discount: 20,
+            //     image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f3f4f6'/%3E%3Cline x1='180' y1='80' x2='180' y2='200' stroke='%23a3a3a3' stroke-width='4'/%3E%3Cline x1='220' y1='80' x2='220' y2='200' stroke='%23a3a3a3' stroke-width='4'/%3E%3Ccircle cx='180' cy='100' r='12' fill='%23d97706'/%3E%3Ccircle cx='180' cy='130' r='12' fill='%23d97706'/%3E%3Ccircle cx='180' cy='160' r='12' fill='%23d97706'/%3E%3Ccircle cx='220' cy='110' r='12' fill='%23d97706'/%3E%3Ccircle cx='220' cy='140' r='12' fill='%23d97706'/%3E%3Ccircle cx='220' cy='170' r='12' fill='%23d97706'/%3E%3Ctext x='200' y='230' font-family='Arial' font-size='14' text-anchor='middle' fill='%23374151'%3EYakitori%3C/text%3E%3C/svg%3E",
+            //     category: "offers"
+            // },
+            // {
+            //     id: 5,
+            //     name: "Poke Veggie",
+            //     description: "Fresh vegetarian poke bowl with avocado and mixed greens",
+            //     price: 65,
+            //     originalPrice: null,
+            //     discount: null,
+            //     image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f3f4f6'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23374151'/%3E%3Ccircle cx='200' cy='150' r='70' fill='%23ffffff'/%3E%3Cpath d='M150 150 A50 50 0 0 1 250 150 Z' fill='%2310b981'/%3E%3Cpath d='M200 100 A50 50 0 0 1 250 150 Z' fill='%23f59e0b'/%3E%3Cpath d='M150 150 A50 50 0 0 1 200 200 Z' fill='%23ef4444'/%3E%3Cpath d='M200 200 A50 50 0 0 1 250 150 Z' fill='%236366f1'/%3E%3Ctext x='200' y='250' font-family='Arial' font-size='14' text-anchor='middle' fill='%23374151'%3EPoke Veggie%3C/text%3E%3C/svg%3E",
+            //     category: "poke_bowl"
+            // },
+            // {
+            //     id: 6,
+            //     name: "Poke Shrimp",
+            //     description: "Delicious shrimp poke bowl with fresh vegetables and sauce",
+            //     price: 80,
+            //     originalPrice: null,
+            //     discount: null,
+            //     image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f3f4f6'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23374151'/%3E%3Ccircle cx='200' cy='150' r='70' fill='%23ffffff'/%3E%3Cellipse cx='170' cy='130' rx='15' ry='8' fill='%23f97316'/%3E%3Cellipse cx='200' cy='140' rx='15' ry='8' fill='%23f97316'/%3E%3Cellipse cx='230' cy='135' rx='15' ry='8' fill='%23f97316'/%3E%3Cpath d='M160 160 Q200 180 240 160' fill='none' stroke='%2310b981' stroke-width='8'/%3E%3Ctext x='200' y='250' font-family='Arial' font-size='14' text-anchor='middle' fill='%23374151'%3EPoke Shrimp%3C/text%3E%3C/svg%3E",
+            //     category: "poke_bowl"
+            // },
+            // {
+            //     id: 7,
+            //     name: "Dynamite Gambas",
+            //     description: "Crispy shrimp tempura with spicy dynamite sauce",
+            //     price: 80,
+            //     originalPrice: null,
+            //     discount: null,
+            //     image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23111827'/%3E%3Crect x='120' y='120' width='160' height='60' rx='30' fill='%23374151'/%3E%3Cellipse cx='150' cy='140' rx='12' ry='8' fill='%23f97316'/%3E%3Cellipse cx='180' cy='145' rx='12' ry='8' fill='%23f97316'/%3E%3Cellipse cx='210' cy='140' rx='12' ry='8' fill='%23f97316'/%3E%3Cellipse cx='240' cy='145' rx='12' ry='8' fill='%23f97316'/%3E%3Cpath d='M140 160 Q200 170 260 160' fill='none' stroke='%23ef4444' stroke-width='4'/%3E%3Ctext x='200' y='220' font-family='Arial' font-size='14' text-anchor='middle' fill='%23f9fafb'%3EDynamite Gambas%3C/text%3E%3C/svg%3E",
+            //     category: "dynamites"
+            // },
+            // {
+            //     id: 8,
+            //     name: "Miso Soup",
+            //     description: "Traditional Japanese miso soup with tofu and seaweed",
+            //     price: 45,
+            //     originalPrice: null,
+            //     discount: null,
+            //     image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f3f4f6'/%3E%3Cellipse cx='200' cy='180' rx='90' ry='20' fill='%23d1d5db'/%3E%3Ccircle cx='200' cy='150' r='70' fill='%23d97706'/%3E%3Crect x='180' y='130' width='15' height='15' fill='%23ffffff'/%3E%3Crect x='205' y='140' width='15' height='15' fill='%23ffffff'/%3E%3Cpath d='M170 160 Q180 165 190 160' fill='none' stroke='%2310b981' stroke-width='2'/%3E%3Cpath d='M210 170 Q220 175 230 170' fill='none' stroke='%2310b981' stroke-width='2'/%3E%3Ctext x='200' y='250' font-family='Arial' font-size='14' text-anchor='middle' fill='%23374151'%3EMiso Soup%3C/text%3E%3C/svg%3E",
+            //     category: "soups"
+            // }
+        ];
+
+        const searchSuggestions = [
+            { name: "Fried Rice", category: "Rice Dishes", image: "🍚" },
+            { name: "Sushi", category: "Japanese", icon: "🍣" },
+            { name: "Poke Bowl", category: "Healthy", icon: "🥗" },
+            { name: "Noodles", category: "Asian", icon: "🍜" },
+            { name: "Tempura", category: "Fried", icon: "🍤" },
+            { name: "Miso Soup", category: "Soups", icon: "🥣" },
+            { name: "Dynamite Roll", category: "Sushi", icon: "🍣" },
+            { name: "Coca Cola", category: "Beverages", icon: "🥤" }
+        ];
+
+        // State management
+        let currentLanguage = localStorage.getItem('language') || 'en';
+        let currentTheme = localStorage.getItem('theme') || 'light';
+        let currentCategory = 'offers';
+        let filteredProducts = products;
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+        });
+
+        function initializeApp() {
+            applyTheme();
+            applyLanguage();
+            renderCategories();
+            renderProducts();
+            setupEventListeners();
+            setupIntersectionObserver();
+            setupTouchSupport();
+            
+            // Remove loading state
+            setTimeout(() => {
+                const loading = document.querySelector('.loading');
+                if (loading) loading.remove();
+            }, 1000);
+        }
+
+        // Theme management
+        function applyTheme() {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            const themeIcon = document.getElementById('themeIcon');
+            themeIcon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme();
+            
+            // Add smooth transition effect
+            document.body.style.transition = 'all 0.3s ease';
+            setTimeout(() => {
+                document.body.style.transition = '';
+            }, 300);
+        }
+
+        // Language management
+        function applyLanguage() {
+            const elements = document.querySelectorAll('[data-translate]');
+            const placeholderElements = document.querySelectorAll('[data-translate-placeholder]');
+            
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                const translation = getNestedTranslation(translations[currentLanguage], key);
+                if (translation) {
+                    element.textContent = translation;
+                }
+            });
+
+            placeholderElements.forEach(element => {
+                const key = element.getAttribute('data-translate-placeholder');
+                const translation = getNestedTranslation(translations[currentLanguage], key);
+                if (translation) {
+                    element.placeholder = translation;
+                }
+            });
+
+            // Update direction for RTL languages
+            document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLanguage;
+            
+            // Update language display
+            const langMap = { en: 'EN', fr: 'FR' };
+            document.getElementById('currentLang').textContent = langMap[currentLanguage];
+        }
+
+        function getNestedTranslation(obj, path) {
+            return path.split('.').reduce((current, key) => current && current[key], obj);
+        }
+
+        function cycleLanguage() {
+            const languages = ['en', 'fr'];
+            const currentIndex = languages.indexOf(currentLanguage);
+            currentLanguage = languages[(currentIndex + 1) % languages.length];
+            localStorage.setItem('language', currentLanguage);
+            applyLanguage();
+            renderCategories(); // Re-render to update translations
+        }
+
+        // Categories rendering
+        function renderCategories() {
+            const categoriesContainer = document.getElementById('categories');
+            categoriesContainer.innerHTML = '';
+
+            categories.forEach((category, index) => {
+                const categoryElement = document.createElement('div');
+                categoryElement.className = `category-card ${category.active ? 'active' : ''}`;
+                categoryElement.setAttribute('role', 'tab');
+                categoryElement.setAttribute('aria-selected', category.active);
+                categoryElement.setAttribute('tabindex', category.active ? '0' : '-1');
+                categoryElement.setAttribute('data-category', category.id);
+                
+                const translation = translations[currentLanguage].categories[category.name] || category.name;
+                categoryElement.textContent = translation;
+                
+                categoryElement.addEventListener('click', () => selectCategory(category.id));
+                categoryElement.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        selectCategory(category.id);
+                    }
+                });
+
+                categoriesContainer.appendChild(categoryElement);
+            });
+        }
+
+        function selectCategory(categoryId) {
+            // Update active category
+            categories.forEach(cat => cat.active = cat.id === categoryId);
+            currentCategory = categoryId;
+            
+            // Re-render categories and products
+            renderCategories();
+            filterAndRenderProducts();
+        }
+
+        // Products rendering
+        function renderProducts() {
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+
+            filteredProducts.forEach((product, index) => {
+                const productElement = createProductCard(product);
+                productElement.classList.add('fade-in', 'slide-in');
+                productElement.style.animationDelay = `${index * 0.1}s`;
+                productsGrid.appendChild(productElement);
+            });
+
+            // Trigger animations
+            setTimeout(() => {
+                document.querySelectorAll('.slide-in').forEach(el => {
+                    el.classList.remove('slide-in');
+                });
+            }, 100);
+        }
+
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.setAttribute('role', 'gridcell');
+            card.setAttribute('tabindex', '0');
+            
+            card.innerHTML = `
+                ${product.discount ? `<div class="discount-badge">Save ${product.discount}%</div>` : ''}
+                <img 
+                    src="${product.image}" 
+                    alt="${product.name}"
+                    class="product-image"
+                    loading="lazy"
+                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'300\\' viewBox=\\'0 0 400 300\\'%3E%3Crect width=\\'400\\' height=\\'300\\' fill=\\'%23f3f4f6\\'/%3E%3Ctext x=\\'200\\' y=\\'150\\' font-family=\\'Arial\\' font-size=\\'16\\' text-anchor=\\'middle\\' fill=\\'%23374151\\'%3EImage not available%3C/text%3E%3C/svg%3E'"
+                >
+                <div class="product-info">
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            ${product.price} MAD
+                            ${product.originalPrice ? `<span class="original-price">${product.originalPrice} MAD</span>` : ''}
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart(${product.id})" aria-label="Add ${product.name} to cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span data-translate="add_to_cart">${translations[currentLanguage].add_to_cart}</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function filterAndRenderProducts() {
+            filteredProducts = currentCategory === 'offers' 
+                ? products.filter(p => p.discount)
+                : products.filter(p => p.category === currentCategory);
+            
+            renderProducts();
+        }
+
+        // Search functionality
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const suggestionsContainer = document.getElementById('searchSuggestions');
+            let searchTimeout;
+
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(searchTimeout);
+                const query = e.target.value.trim().toLowerCase();
+                
+                if (query.length === 0) {
+                    hideSuggestions();
+                    return;
+                }
+
+                searchTimeout = setTimeout(() => {
+                    showSuggestions(query);
+                }, 200);
+            });
+
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    hideSuggestions();
+                }
+            });
+
+            // Hide suggestions when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.search-container')) {
+                    hideSuggestions();
+                }
+            });
+        }
+
+        function showSuggestions(query) {
+            const suggestionsContainer = document.getElementById('searchSuggestions');
+            const matchingSuggestions = searchSuggestions.filter(item => 
+                item.name.toLowerCase().includes(query) || 
+                item.category.toLowerCase().includes(query)
+            ).slice(0, 6);
+
+            if (matchingSuggestions.length === 0) {
+                hideSuggestions();
+                return;
+            }
+
+            suggestionsContainer.innerHTML = '';
+            
+            matchingSuggestions.forEach((suggestion, index) => {
+                const suggestionElement = document.createElement('div');
+                suggestionElement.className = 'suggestion-item';
+                suggestionElement.setAttribute('role', 'option');
+                suggestionElement.setAttribute('tabindex', '0');
+                
+                suggestionElement.innerHTML = `
+                    <span style="font-size: 1.25rem;">${suggestion.icon}</span>
+                    <div>
+                        <div style="font-weight: 500;">${suggestion.name}</div>
+                        <div style="font-size: 0.875rem; color: var(--text-secondary);">${suggestion.category}</div>
+                    </div>
+                `;
+
+                suggestionElement.addEventListener('click', () => {
+                    selectSuggestion(suggestion);
+                });
+
+                suggestionElement.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        selectSuggestion(suggestion);
+                    }
+                });
+
+                suggestionsContainer.appendChild(suggestionElement);
+            });
+
+            suggestionsContainer.style.display = 'block';
+        }
+
+        function selectSuggestion(suggestion) {
+            document.getElementById('searchInput').value = suggestion.name;
+            hideSuggestions();
+            
+            // Filter products based on search
+            filteredProducts = products.filter(p => 
+                p.name.toLowerCase().includes(suggestion.name.toLowerCase()) ||
+                p.description.toLowerCase().includes(suggestion.name.toLowerCase())
+            );
+            
+            if (filteredProducts.length === 0) {
+                filteredProducts = products;
+            }
+            
+            renderProducts();
+        }
+
+        function hideSuggestions() {
+            const suggestionsContainer = document.getElementById('searchSuggestions');
+            suggestionsContainer.style.display = 'none';
+        }
+
+        // Touch support for categories
+        function setupTouchSupport() {
+            const categoriesContainer = document.querySelector('.categories');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            categoriesContainer.addEventListener('touchstart', (e) => {
+                isDown = true;
+                startX = e.touches[0].pageX - categoriesContainer.offsetLeft;
+                scrollLeft = categoriesContainer.scrollLeft;
+            });
+
+            categoriesContainer.addEventListener('touchmove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.touches[0].pageX - categoriesContainer.offsetLeft;
+                const walk = (x - startX) * 2;
+                categoriesContainer.scrollLeft = scrollLeft - walk;
+            });
+
+            categoriesContainer.addEventListener('touchend', () => {
+                isDown = false;
+            });
+
+            // Mouse support for desktop
+            categoriesContainer.addEventListener('mousedown', (e) => {
+                isDown = true;
+                categoriesContainer.classList.add('active');
+                startX = e.pageX - categoriesContainer.offsetLeft;
+                scrollLeft = categoriesContainer.scrollLeft;
+            });
+
+            categoriesContainer.addEventListener('mouseleave', () => {
+                isDown = false;
+                categoriesContainer.classList.remove('active');
+            });
+
+            categoriesContainer.addEventListener('mouseup', () => {
+                isDown = false;
+                categoriesContainer.classList.remove('active');
+            });
+
+            categoriesContainer.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - categoriesContainer.offsetLeft;
+                const walk = (x - startX) * 2;
+                categoriesContainer.scrollLeft = scrollLeft - walk;
+            });
+        }
+
+        // Intersection Observer for animations
+        function setupIntersectionObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Observe product cards as they're created
+            const observeNewElements = () => {
+                document.querySelectorAll('.product-card:not(.fade-in)').forEach(card => {
+                    observer.observe(card);
+                });
+            };
+
+            // Initial observation
+            setTimeout(observeNewElements, 100);
+        }
+
+        // Event listeners
+        function setupEventListeners() {
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+            document.getElementById('langToggle').addEventListener('click', cycleLanguage);
+            setupSearch();
+
+            // Keyboard navigation for categories
+            document.addEventListener('keydown', (e) => {
+                if (e.target.matches('.category-card')) {
+                    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        const categories = document.querySelectorAll('.category-card');
+                        const currentIndex = Array.from(categories).indexOf(e.target);
+                        let newIndex;
+                        
+                        if (e.key === 'ArrowLeft') {
+                            newIndex = currentIndex > 0 ? currentIndex - 1 : categories.length - 1;
+                        } else {
+                            newIndex = currentIndex < categories.length - 1 ? currentIndex + 1 : 0;
+                        }
+                        
+                        categories[newIndex].focus();
+                    }
+                }
+            });
+        }
+
+        // Cart functionality
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            // Simple cart animation
+            const button = event.target.closest('.add-to-cart');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '<i class="fas fa-check"></i> Added!';
+            button.style.background = 'var(--accent-color)';
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.style.background = '';
+            }, 2000);
+
+
+
+
+
+
+
+
+
+
+
+            // Here you would typically add to actual cart state
+            console.log('Added to cart:', product);
+        }
+
+        // Service Worker registration for PWA capabilities
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
